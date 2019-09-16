@@ -1,20 +1,17 @@
 class Map:
     def __init__(self, filename):
         self.filename = filename
-        self.structure = 0
+        self.structure = []
 
     def load_maze(self):
         # loading a maze structure from the txt file
         with open(self.filename, "r") as f:
-            level_structure = []
 
             for ligne in f:
-                line_level = []
-                for sprite in ligne:
-                    if sprite != "\n":
-                        line_level.append(sprite)
-                level_structure.append(line_level)
-            self.structure = level_structure
+                line_level = list(ligne)
+                line_level = line_level[:-1] # remove last character from line_level list
+                self.structure.append(line_level)
+
 
 def main():
     map = Map("level.txt")
