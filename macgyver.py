@@ -1,6 +1,7 @@
 import constants
 
 class MacGyver:    #Class who manage main character movements on the maze
+
 	def __init__(self)
 		# define the initial position of MacGyver
 		self.position_x = 0
@@ -12,8 +13,8 @@ class MacGyver:    #Class who manage main character movements on the maze
 	def move_right(self, direction):
 		if direction == 'right':
 			if self.position_x < (constants.COLUMNS - 1):
-					self.position_x += 1
-					self.position_case_x = (self.position_x * constants.SPRITE_SIZE)
+				self.position_x += 1
+				self.position_case_x = (self.position_x * constants.SPRITE_SIZE)
 
 	def move_left(self, direction):
 		if direction == 'left':
