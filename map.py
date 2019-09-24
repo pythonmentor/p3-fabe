@@ -20,7 +20,7 @@ class Map:
             for n_col, col in enumerate(ligne):
                 if col == "d":
                     self.start = (n_ligne, n_col)
-                    print("MacG")
+                    print(self.start)
 
     def load_guardian(self):
         # define the initial position of guardian
@@ -28,7 +28,7 @@ class Map:
             for n_col, col in enumerate(ligne):
                 if col == "a":
                     self.finish = (n_ligne, n_col)
-                    print("Guardian")
+                    print(self.finish)
 
     def load_items(self):
         self.items_poss = []
