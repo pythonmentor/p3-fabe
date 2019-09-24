@@ -37,10 +37,9 @@ class Map:
                 if col == "0":
                     position = (n_ligne, n_col)
                     self.items_poss.append(position)
-        print(self.items_poss)
+                    self.items = random.choice(self.items_poss)
+        print(self.items)
 
-
-    
 
 def main():
     map = Map("level.txt")
