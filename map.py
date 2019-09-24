@@ -37,8 +37,10 @@ class Map:
                 if col == "0":
                     position = (n_ligne, n_col)
                     self.items_poss.append(position)
-                    self.items = random.choice(self.items_poss)
+        self.items = random.sample(self.items_poss, 3)
         print(self.items)
+
+    
 
 
 def main():
