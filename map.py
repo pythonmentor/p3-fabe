@@ -1,4 +1,4 @@
-from random import random
+import random
 
 class Map:
 
@@ -20,6 +20,7 @@ class Map:
             for n_col, col in enumerate(ligne):
                 if col == "d":
                     self.start = (n_ligne, n_col)
+                    print("MacG")
 
     def load_guardian(self):
         # define the initial position of guardian
@@ -27,15 +28,16 @@ class Map:
             for n_col, col in enumerate(ligne):
                 if col == "a":
                     self.finish = (n_ligne, n_col)
+                    print("Guardian")
 
     def load_items(self):
         self.items_poss = []
         for n_ligne, ligne in enumerate(self.structure):
             for n_col, col in enumerate(ligne):
-                if n_col == "0":
-                    self.position = (n_ligne, n_col)
-                    self.items_poss.append(self.position)
-                    self.items = random.choice(self.items_poss)
+                if col == "0":
+                    position = (n_ligne, n_col)
+                    self.items_poss.append(position)
+        print(self.items_poss)
 
 
     
@@ -43,10 +45,11 @@ class Map:
 def main():
     map = Map("level.txt")
     map.load_maze()
+    print(map.structure)
     map.load_hero()
     map.load_guardian()
     map.load_items()
-    print(map.structure)
+    
 
 if __name__ == "__main__":
     main()
