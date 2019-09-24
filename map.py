@@ -1,9 +1,10 @@
+from random import random
+
 class Map:
+
     def __init__(self, filename):
         self.filename = filename
         self.structure = []
-        self.start = None
-        self.finish = None
 
     def load_maze(self):
         # loading a maze structure from the txt file
@@ -18,29 +19,23 @@ class Map:
         for n_ligne, ligne in enumerate(self.structure):
             for n_col, col in enumerate(ligne):
                 if col == "d":
-                    print("MacGyver")
+                    self.start = (n_ligne, n_col)
 
     def load_guardian(self):
         # define the initial position of guardian
         for n_ligne, ligne in enumerate(self.structure):
             for n_col, col in enumerate(ligne):
                 if col == "a":
-                    print("guardian")
-
-    """def load_guardian(self):
-        for x in range(len(self.structure)):
-	        for y in range(len(self.structure[x])):
-                if y == "a":
-                    print("guardian")"""
+                    self.finish = (n_ligne, n_col)
 
     def load_items(self):
-        pass
-
-
-  
-
-
-    
+        self.items_poss = []
+        for n_ligne, ligne in enumerate(self.structure):
+            for n_col, col in enumerate(ligne):
+                if n_col == "0":
+                    self.position = (n_ligne, n_col)
+                    self.items_poss.append(self.position)
+                    self.items = random.choice(self.items_poss)
 
 
     
@@ -50,6 +45,8 @@ def main():
     map.load_maze()
     map.load_hero()
     map.load_guardian()
+    map.load_items()
+    print(map.structure)
 
 if __name__ == "__main__":
     main()
