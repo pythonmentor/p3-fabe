@@ -19,7 +19,7 @@ class Map:
                 self.structure.append(line_level)
 
 
-    def load_hero(self):
+    def pos_hero(self):
         # define the initial position of MacGyver
         for n_ligne, ligne in enumerate(self.structure):
             for n_col, col in enumerate(ligne):
@@ -27,7 +27,7 @@ class Map:
                     self.start = (n_ligne, n_col)
                     print(self.start)
 
-    def load_guardian(self):
+    def pos_guardian(self):
         # define the initial position of guardian
         for n_ligne, ligne in enumerate(self.structure):
             for n_col, col in enumerate(ligne):
@@ -35,7 +35,7 @@ class Map:
                     self.finish = (n_ligne, n_col)
                     print(self.finish)
 
-    def load_items(self):
+    def pos_items(self):
         # define 3 random positions for items
         self.items_poss = []
         for n_ligne, ligne in enumerate(self.structure):
@@ -46,27 +46,18 @@ class Map:
         self.items = random.sample(self.items_poss, 3)
         print(self.items)
 
-    """def wall_position(self):
-        self.wall_position = []
-        for n_ligne, ligne in enumerate(self.structure):
-            for n_col, col in enumerate(ligne):
-                if col == "m":
-                    self.wall_position = (n_ligne, n_col)
-                    #print(self.wall_position)"""
-
-
     def display(self):
 
         window = pygame.display.set_mode((ROWS*SPRITE_SIZE, COLUMNS*SPRITE_SIZE))
 
         wall = pygame.image.load('ressource/wall.jpg')
-        macgyver = pygame.image.load('ressource/MacGyver.png').convert_alpha()
+        macgyver = pygame.image.load('ressource/macgyver.png').convert_alpha()
         guardian = pygame.image.load('ressource/Gardien.png').convert_alpha()
         item1 = pygame.image.load('ressource/aiguille.png').convert_alpha()
         item2 = pygame.image.load('ressource/ether.png').convert_alpha()
         item3 = pygame.image.load('ressource/seringue.png').convert_alpha()
 
-        n_ligne = 0
+        """n_ligne = 0
         for line in self.structure:
             n_col = 0
             for sprite in line:
@@ -76,6 +67,18 @@ class Map:
                     window.blit(wall, (pos_x, pos_y))
                 n_col += 1
             n_ligne +=1
+        pygame.display.flip()"""
+
+        for n_ligne, ligne in enumerate(self.structure):
+            for n_col, col in enumerate(ligne):
+                pos_x = n_ligne * SPRITE_SIZE
+                pos_y = n_col * SPRITE_SIZE
+                if col == "m":
+                    window.blit(wall, (pos_x, pos_y))
+                if col == "d":
+                    window.blit(macgyver, (pos_x, pos_y))
+                if col == "a":
+                    window.blit(guardian, (pos_x, pos_y))
         pygame.display.flip()
 
         launched = True
