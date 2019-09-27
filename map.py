@@ -18,6 +18,7 @@ class Map:
                 line_level = line_level[:-1] # remove last character from line_level list
                 self.structure.append(line_level)
 
+
     def load_hero(self):
         # define the initial position of MacGyver
         for n_ligne, ligne in enumerate(self.structure):
@@ -58,7 +59,7 @@ class Map:
 
         window = pygame.display.set_mode((ROWS*SPRITE_SIZE, COLUMNS*SPRITE_SIZE))
 
-        wall = pygame.image.load('ressource/wall.jpg').convert()
+        wall = pygame.image.load('ressource/wall.jpg')
         macgyver = pygame.image.load('ressource/MacGyver.png').convert_alpha()
         guardian = pygame.image.load('ressource/Gardien.png').convert_alpha()
         item1 = pygame.image.load('ressource/aiguille.png').convert_alpha()
@@ -73,17 +74,15 @@ class Map:
                 pos_y = n_col * SPRITE_SIZE
                 if sprite == "m":
                     window.blit(wall, (pos_x, pos_y))
-            n_col += 1
-        n_ligne +=1
-        
+                n_col += 1
+            n_ligne +=1
         pygame.display.flip()
 
         launched = True
         while launched:
             for event in pygame.event.get():
-		        if event.type == pygame.QUIT:
-			        launched = False
-
+                  if event.type == pygame.QUIT:
+                        launched = False
 
                     
 
