@@ -65,22 +65,21 @@ class Map:
         item2 = pygame.image.load('ressource/ether.png').convert_alpha()
         item3 = pygame.image.load('ressource/seringue.png').convert_alpha()
 
+        n_ligne = 0
+        for line in self.structure:
+            n_col = 0
+            for sprite in line:
+                pos_x = n_ligne * SPRITE_SIZE
+                pos_y = n_col * SPRITE_SIZE
+                if sprite == "m":
+                    window.blit(wall, (pos_x, pos_y))
+            n_col += 1
+        n_ligne +=1
+        
+        pygame.display.flip()
 
         launched = True
-        
         while launched:
-            n_ligne = 0
-            for line in self.structure:
-                n_col = 0
-                for sprite in line:
-                    pos_x = n_ligne * SPRITE_SIZE
-                    pos_y = n_col * SPRITE_SIZE
-                    if sprite == "m":
-                        window.blit(wall, (pos_x, pos_y))
-                n_col += 1
-            n_ligne +=1
-            pygame.display.flip()
-
             for event in pygame.event.get():
 		        if event.type == pygame.QUIT:
 			        launched = False
