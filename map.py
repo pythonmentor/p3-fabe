@@ -69,12 +69,6 @@ class Map:
                     window.blit(guardian, (self.finish))
 
         object_number = 0
-        for n_ligne, ligne in enumerate(self.pos_items):
-            for n_col, col in enumerate(ligne):
-                pos_x = n_ligne * SPRITE_SIZE
-                pos_y = n_col * SPRITE_SIZE
-
-        object_number = 0
         for x, y in self.pos_items:
             pos_x = x * SPRITE_SIZE
             pos_y = y * SPRITE_SIZE
