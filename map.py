@@ -19,21 +19,21 @@ class Map:
                 self.structure.append(line_level)
 
 
-    def pos_hero(self):
+    """def pos_hero(self):
         # define the initial position of MacGyver
         for n_ligne, ligne in enumerate(self.structure):
             for n_col, col in enumerate(ligne):
                 if col == "d":
                     self.start = (n_ligne, n_col)
-                    print(self.start)
+                    #print(self.start)"""
 
-    def pos_guardian(self):
+    """def pos_guardian(self):
         # define the initial position of guardian
         for n_ligne, ligne in enumerate(self.structure):
             for n_col, col in enumerate(ligne):
                 if col == "a":
                     self.finish = (n_ligne, n_col)
-                    print(self.finish)
+                    #print(self.finish)"""
 
     def pos_items(self):
         # define 3 random positions for items
@@ -44,7 +44,7 @@ class Map:
                     position_items = (n_ligne, n_col)
                     self.items_poss.append(position_items)
         self.items = random.sample(self.items_poss, 3)
-        print(self.items)
+        #print(self.items)
 
     def display(self):
 
@@ -56,29 +56,20 @@ class Map:
         item1 = pygame.image.load('ressource/aiguille.png').convert_alpha()
         item2 = pygame.image.load('ressource/ether.png').convert_alpha()
         item3 = pygame.image.load('ressource/seringue.png').convert_alpha()
-
-        """n_ligne = 0
-        for line in self.structure:
-            n_col = 0
-            for sprite in line:
-                pos_x = n_ligne * SPRITE_SIZE
-                pos_y = n_col * SPRITE_SIZE
-                if sprite == "m":
-                    window.blit(wall, (pos_x, pos_y))
-                n_col += 1
-            n_ligne +=1
-        pygame.display.flip()"""
-
+        
         for n_ligne, ligne in enumerate(self.structure):
             for n_col, col in enumerate(ligne):
                 pos_x = n_ligne * SPRITE_SIZE
                 pos_y = n_col * SPRITE_SIZE
                 if col == "m":
                     window.blit(wall, (pos_x, pos_y))
-                if col == "d":
+                elif col == "d":
                     window.blit(macgyver, (pos_x, pos_y))
-                if col == "a":
+                elif col == "a":
                     window.blit(guardian, (pos_x, pos_y))
+                elif col == "0":
+                    window.blit(item1, ())
+
         pygame.display.flip()
 
         launched = True
@@ -101,9 +92,9 @@ def main():
     map = Map("level.txt")
     map.load_maze()
     #print(map.structure)
-    #map.load_hero()
-    #map.load_guardian()
-    #map.load_items()
+    #map.pos_hero()
+    #map.pos_guardian()
+    #map.pos_items()
     map.display()
     
 
