@@ -2,7 +2,6 @@ import random
 import pygame
 from pygame.locals import *
 from constants import *
-pygame.init()
 
 class Map:
 
@@ -23,16 +22,14 @@ class Map:
         for n_ligne, ligne in enumerate(self.structure):
             for n_col, col in enumerate(ligne):
                 if col == "d":
-                    self.start = (n_ligne, n_col)
-                    #print(self.start)"""
+                    self.start = (n_ligne, n_col)"""
 
     """def pos_guardian(self):
         # define the initial position of guardian
         for n_ligne, ligne in enumerate(self.structure):
             for n_col, col in enumerate(ligne):
                 if col == "a":
-                    self.finish = (n_ligne, n_col)
-                    #print(self.finish)"""
+                    self.finish = (n_ligne, n_col)"""
 
     def pos_items(self):
         # define 3 random positions for items
@@ -43,12 +40,10 @@ class Map:
                     position_items = (n_ligne, n_col)
                     self.items_poss.append(position_items)
         self.pos_items = random.sample(self.items_poss, 3)
-        #print(self.pos_items)
 
     def display(self):
 
         window = pygame.display.set_mode((ROWS*SPRITE_SIZE, COLUMNS*SPRITE_SIZE))
-        #window.fill(BACKGROUND_COLOR)
 
         wall = pygame.image.load('ressource/wall.jpg')
         macgyver = pygame.image.load('ressource/macgyver.png').convert_alpha()
@@ -83,34 +78,3 @@ class Map:
 
         pygame.display.flip()
 
-        launched = True
-        while launched:
-
-            for event in pygame.event.get(pygame.KEYDOWN):
-                if event.type == pygame.K_UP:
-                    print("on va en haut")
-                elif event.type == pygame.K_DOWN:
-                    print("on va en bas")
-                elif event.type == pygame.K_LEFT:
-                    print("on va à gauche")
-                elif event.type == pygame.K_RIGHT:
-                    print("on va à droite")
-
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    launched = False
-
-        
-
-def main():
-    map = Map("level.txt")
-    map.load_maze()
-    #print(map.structure)
-    #map.pos_hero()
-    #map.pos_guardian()
-    map.pos_items()
-    map.display()
-    
-
-if __name__ == "__main__":
-    main()
