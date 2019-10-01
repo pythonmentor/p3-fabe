@@ -13,19 +13,19 @@ class Game:
         
 
     def run(self):
-        launched = True
-        while launched:
+        continuer = True
+        while continuer:
             for event in pygame.event.get():
-                if event.type == QUIT:
-                    launched = False
-                elif event.type == KEYDOWN:
-                    if event.type == K_UP:
-                        print("haut")
-                    elif event.type == K_DOWN:
+                if event.type == pygame.QUIT:
+                    continuer = False
+                if event.type == KEYDOWN:
+                    if event.key == K_DOWN:
                         print("bas")
-                    elif event.type == K_RIGHT:
+                    if event.key == K_UP:
+                        print("haut")
+                    if event.key == K_RIGHT:
                         print("droite")
-                    elif event.type == K_LEFT:
+                    if event.key == K_LEFT:
                         print("gauche")
 
 

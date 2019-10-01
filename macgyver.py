@@ -2,7 +2,7 @@ import constants
 
 class MacGyver:    #Class who manage main character movements on the maze
 
-	def __init__(self, position)
+	def __init__(self, )
 		# define the initial position of MacGyver
 		self.position_x = 0
 		self.position_y = 0
