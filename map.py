@@ -85,9 +85,20 @@ class Map:
 
         launched = True
         while launched:
+
+            for event in pygame.event.get(pygame.KEYDOWN):
+                if event.type == pygame.K_UP:
+                    print("on va en haut")
+                elif event.type == pygame.K_DOWN:
+                    print("on va en bas")
+                elif event.type == pygame.K_LEFT:
+                    print("on va à gauche")
+                elif event.type == pygame.K_RIGHT:
+                    print("on va à droite")
+
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                        launched = False
+                    launched = False
 
         
 
