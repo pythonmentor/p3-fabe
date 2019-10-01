@@ -18,7 +18,7 @@ class Map:
                 line_level = line_level[:-1] # remove last character from line_level list
                 self.structure.append(line_level)
 
-    def pos_hero(self):
+    """def pos_hero(self):
         # define the initial position of MacGyver
         for n_ligne, ligne in enumerate(self.structure):
             for n_col, col in enumerate(ligne):
@@ -26,7 +26,7 @@ class Map:
                     self.start = (n_ligne, n_col)
                     #print(self.start)"""
 
-    def pos_guardian(self):
+    """def pos_guardian(self):
         # define the initial position of guardian
         for n_ligne, ligne in enumerate(self.structure):
             for n_col, col in enumerate(ligne):
@@ -43,7 +43,7 @@ class Map:
                     position_items = (n_ligne, n_col)
                     self.items_poss.append(position_items)
         self.pos_items = random.sample(self.items_poss, 3)
-        print(self.pos_items)
+        #print(self.pos_items)
 
     def display(self):
 
@@ -64,12 +64,12 @@ class Map:
                 if col == "m":
                     window.blit(wall, (pos_x, pos_y))
                 elif col == "d":
-                    window.blit(macgyver, (self.start))
+                    window.blit(macgyver, (pos_x, pos_y))
                 elif col == "a":
-                    window.blit(guardian, (self.finish))
+                    window.blit(guardian, (pos_x, pos_y))
 
         object_number = 0
-        for x, y in self.pos_items:
+        for (x, y) in self.pos_items:
             pos_x = x * SPRITE_SIZE
             pos_y = y * SPRITE_SIZE
             if object_number == 0:
@@ -86,15 +86,17 @@ class Map:
         launched = True
         while launched:
             for event in pygame.event.get():
-                  if event.type == pygame.QUIT:
+                if event.type == pygame.QUIT:
                         launched = False
+
+        
 
 def main():
     map = Map("level.txt")
     map.load_maze()
-    print(map.structure)
-    map.pos_hero()
-    map.pos_guardian()
+    #print(map.structure)
+    #map.pos_hero()
+    #map.pos_guardian()
     map.pos_items()
     map.display()
     
