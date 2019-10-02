@@ -16,20 +16,33 @@ class Map:
                 line_level = list(ligne)
                 line_level = line_level[:-1] # remove last character from line_level list
                 self.structure.append(line_level)
+            #print(self.structure)
 
-    """def pos_hero(self):
+    def pos_hero(self):
         # define the initial position of MacGyver
         for n_ligne, ligne in enumerate(self.structure):
             for n_col, col in enumerate(ligne):
                 if col == "d":
-                    self.start = (n_ligne, n_col)"""
+                    self.start = (n_ligne, n_col)
+        #print(self.start)
 
     """def pos_guardian(self):
         # define the initial position of guardian
         for n_ligne, ligne in enumerate(self.structure):
             for n_col, col in enumerate(ligne):
                 if col == "a":
-                    self.finish = (n_ligne, n_col)"""
+                    self.finish = (n_ligne, n_col)
+        #print(self.finish)"""
+
+    def pos_walls(self):
+        # define all paths positions
+        self.pos_walls = []
+        for n_ligne, ligne in enumerate(self.structure):
+            for n_col, col in enumerate(ligne):
+                if col == "m":
+                    walls = (n_ligne, n_col)
+                    self.pos_walls.append(walls)
+        #print(self.pos_walls)
 
     def pos_items(self):
         # define 3 random positions for items
@@ -40,6 +53,7 @@ class Map:
                     position_items = (n_ligne, n_col)
                     self.items_poss.append(position_items)
         self.pos_items = random.sample(self.items_poss, 3)
+        #print(self.pos_items)
 
     def display(self):
 
@@ -77,4 +91,3 @@ class Map:
                 window.blit(item3, (pos_x, pos_y))
 
         pygame.display.flip()
-
