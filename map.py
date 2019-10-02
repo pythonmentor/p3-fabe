@@ -18,12 +18,12 @@ class Map:
                 self.structure.append(line_level)
             #print(self.structure)
 
-    def pos_hero(self):
+    """def pos_hero(self):
         # define the initial position of MacGyver
         for n_ligne, ligne in enumerate(self.structure):
             for n_col, col in enumerate(ligne):
                 if col == "d":
-                    self.start = (n_ligne, n_col)
+                    self.start = (n_ligne, n_col)"""
         #print(self.start)
 
     """def pos_guardian(self):
