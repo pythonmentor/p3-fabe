@@ -1,18 +1,20 @@
 import pygame
 from pygame.locals import *
 from map import *
+from macgyver import *
 
 class Game:
 
     def __init__(self):
         pygame.init()
+        
+
+    def run(self):
         map = Map("level.txt")
         map.load_maze()
         map.pos_items()
         map.display()
-        
-
-    def run(self):
+        macg = MG(map)
         continuer = True
         while continuer:
             for event in pygame.event.get():
@@ -20,13 +22,13 @@ class Game:
                     continuer = False
                 if event.type == KEYDOWN:
                     if event.key == K_DOWN:
-                        print("bas")
+                        macg.move_down()
                     if event.key == K_UP:
-                        print("haut")
+                        macg.move_up()
                     if event.key == K_RIGHT:
-                        print("droite")
+                        macg.move_right()
                     if event.key == K_LEFT:
-                        print("gauche")
+                        macg.move_left()
 
 
 def main():

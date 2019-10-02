@@ -16,44 +16,39 @@ class Map:
                 line_level = list(ligne)
                 line_level = line_level[:-1] # remove last character from line_level list
                 self.structure.append(line_level)
-            #print(self.structure)
 
-    """def pos_hero(self):
-        # define the initial position of MacGyver
-        for n_ligne, ligne in enumerate(self.structure):
-            for n_col, col in enumerate(ligne):
-                if col == "d":
-                    self.start = (n_ligne, n_col)"""
-        #print(self.start)
+    def pos_hero(self):
+        # define position of MacGyver
+        for x, col in enumerate(self.structure):
+            for y, case in enumerate(col):
+                if case == "d":
+                    self.pos_hero = (x, y)      
 
     """def pos_guardian(self):
-        # define the initial position of guardian
-        for n_ligne, ligne in enumerate(self.structure):
-            for n_col, col in enumerate(ligne):
-                if col == "a":
-                    self.finish = (n_ligne, n_col)
-        #print(self.finish)"""
+        # define position of guardian
+        for x, col in enumerate(self.structure):
+            for y, case in enumerate(col):
+                if case == "a":
+                    self.pos_guardian = (x, y)"""
 
     def pos_walls(self):
         # define all paths positions
         self.pos_walls = []
-        for n_ligne, ligne in enumerate(self.structure):
-            for n_col, col in enumerate(ligne):
-                if col == "m":
-                    walls = (n_ligne, n_col)
+        for x, col in enumerate(self.structure):
+            for y, case in enumerate(col):
+                if case == "m":
+                    walls = (x, y)
                     self.pos_walls.append(walls)
-        #print(self.pos_walls)
 
     def pos_items(self):
         # define 3 random positions for items
         self.items_poss = []
-        for n_ligne, ligne in enumerate(self.structure):
-            for n_col, col in enumerate(ligne):
-                if col == "0":
-                    position_items = (n_ligne, n_col)
+        for x, col in enumerate(self.structure):
+            for y, case in enumerate(col):
+                if case == "0":
+                    position_items = (x, y)
                     self.items_poss.append(position_items)
         self.pos_items = random.sample(self.items_poss, 3)
-        #print(self.pos_items)
 
     def display(self):
 
@@ -66,15 +61,15 @@ class Map:
         item2 = pygame.image.load('ressource/ether.png').convert_alpha()
         item3 = pygame.image.load('ressource/seringue.png').convert_alpha()
         
-        for n_ligne, ligne in enumerate(self.structure):
-            for n_col, col in enumerate(ligne):
-                pos_x = n_ligne * SPRITE_SIZE
-                pos_y = n_col * SPRITE_SIZE
-                if col == "m":
+        for x, col in enumerate(self.structure):
+            for y, case in enumerate(col):
+                pos_x = x * SPRITE_SIZE
+                pos_y = y * SPRITE_SIZE
+                if case == "m":
                     window.blit(wall, (pos_x, pos_y))
-                elif col == "d":
+                elif case == "d":
                     window.blit(macgyver, (pos_x, pos_y))
-                elif col == "a":
+                elif case == "a":
                     window.blit(guardian, (pos_x, pos_y))
 
         object_number = 0
