@@ -51,6 +51,7 @@ class Map:
         self.pos_items = random.sample(self.items_poss, 3)
 
     def display(self, window):
+        background = pygame.image.load('ressource/background.jpg').convert()
         wall = pygame.image.load('ressource/wall.jpg')
         macgyver = pygame.image.load('ressource/macgyver.png').convert_alpha()
         guardian = pygame.image.load('ressource/Gardien.png').convert_alpha()
@@ -64,6 +65,8 @@ class Map:
                 pos_y = y * SPRITE_SIZE
                 if case == "m":
                     window.blit(wall, (pos_x, pos_y))
+                elif case == "0":
+                    window.blit(background, (pos_x, pos_y))
                 elif case == "d":
                     window.blit(macgyver, (pos_x, pos_y))
                 elif case == "a":
@@ -81,20 +84,37 @@ class Map:
                 object_number +=1
             else:
                 window.blit(item3, (pos_x, pos_y))
-
-        pygame.display.flip()
     
     def display_update(self, window):
+        background = pygame.image.load('ressource/background.jpg').convert()
         wall = pygame.image.load('ressource/wall.jpg')
         guardian = pygame.image.load('ressource/Gardien.png').convert_alpha()
-
+        item1 = pygame.image.load('ressource/aiguille.png').convert_alpha()
+        item2 = pygame.image.load('ressource/ether.png').convert_alpha()
+        item3 = pygame.image.load('ressource/seringue.png').convert_alpha()
+        
         for x, col in enumerate(self.structure):
             for y, case in enumerate(col):
                 pos_x = x * SPRITE_SIZE
                 pos_y = y * SPRITE_SIZE
                 if case == "m":
                     window.blit(wall, (pos_x, pos_y))
+                elif case == "0":
+                    window.blit(background, (pos_x, pos_y))
+                elif case == "d":
+                    window.blit(background, (pos_x, pos_y))
                 elif case == "a":
                     window.blit(guardian, (pos_x, pos_y))
 
-        pygame.display.flip()
+        object_number = 0
+        for (x, y) in self.pos_items:
+            pos_x = x * SPRITE_SIZE
+            pos_y = y * SPRITE_SIZE
+            if object_number == 0:
+                window.blit(item1, (pos_x, pos_y))
+                object_number +=1
+            elif object_number == 1:
+                window.blit(item2, (pos_x, pos_y))               
+                object_number +=1
+            else:
+                window.blit(item3, (pos_x, pos_y))
