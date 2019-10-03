@@ -33,8 +33,7 @@ class Game:
                         macg.move_left()
 
             window.blit(pygame.image.load('ressource/macgyver.png').convert_alpha(), (macg.x, macg.y))
-            map.display(window)
-            pygame.display.flip()
+            map.display_update(window)
        
 
 
