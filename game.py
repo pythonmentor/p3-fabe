@@ -13,8 +13,10 @@ class Game:
         map = Map("level.txt")
         map.load_maze()
         map.pos_items()
-        map.display()
+        window = pygame.display.set_mode((ROWS*SPRITE_SIZE, COLUMNS*SPRITE_SIZE))
+        map.display(window)
         macg = MG(map)
+
         continuer = True
         while continuer:
             for event in pygame.event.get():
@@ -29,6 +31,11 @@ class Game:
                         macg.move_right()
                     if event.key == K_LEFT:
                         macg.move_left()
+
+            window.blit(pygame.image.load('ressource/macgyver.png').convert_alpha(), (macg.x, macg.y))
+            map.display(window)
+            pygame.display.flip()
+       
 
 
 def main():
