@@ -50,10 +50,7 @@ class Map:
                     self.items_poss.append(position_items)
         self.pos_items = random.sample(self.items_poss, 3)
 
-    def display(self):
-
-        window = pygame.display.set_mode((ROWS*SPRITE_SIZE, COLUMNS*SPRITE_SIZE))
-
+    def display(self, window):
         wall = pygame.image.load('ressource/wall.jpg')
         macgyver = pygame.image.load('ressource/macgyver.png').convert_alpha()
         guardian = pygame.image.load('ressource/Gardien.png').convert_alpha()
@@ -84,5 +81,20 @@ class Map:
                 object_number +=1
             else:
                 window.blit(item3, (pos_x, pos_y))
+
+        pygame.display.flip()
+    
+    def display_update(self, window):
+        wall = pygame.image.load('ressource/wall.jpg')
+        guardian = pygame.image.load('ressource/Gardien.png').convert_alpha()
+
+        for x, col in enumerate(self.structure):
+            for y, case in enumerate(col):
+                pos_x = x * SPRITE_SIZE
+                pos_y = y * SPRITE_SIZE
+                if case == "m":
+                    window.blit(wall, (pos_x, pos_y))
+                elif case == "a":
+                    window.blit(guardian, (pos_x, pos_y))
 
         pygame.display.flip()
