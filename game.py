@@ -15,7 +15,8 @@ class Game:
         map.pos_items()
         window = pygame.display.set_mode((ROWS*SPRITE_SIZE, COLUMNS*SPRITE_SIZE))
         map.display(window)
-        macg = MG(map)
+        macg_img = pygame.image.load('ressource/macgyver.png').convert_alpha()
+        macg = MG(map, macg_img)
 
         continuer = True
         while continuer:
@@ -31,14 +32,11 @@ class Game:
                         macg.move_right()
                     if event.key == K_LEFT:
                         macg.move_left()
-                
-            map.display_update(window)            
-            window.blit(pygame.image.load('ressource/macgyver.png'), (macg.x, macg.y))
+            
+            window.fill((0, 0, 0))
+            map.display(window)            
+            window.blit(macg.image, (macg.x, macg.y))
             pygame.display.update()
-
-            
-            
-       
 
 
 def main():
