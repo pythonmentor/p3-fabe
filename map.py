@@ -83,6 +83,8 @@ class Map:
             else:
                 window.blit(item3, (pos_x, pos_y))
 
+        pygame.display.flip()
+
     def display_update(self, window):
         wall = pygame.image.load('ressource/wall.jpg')
         guardian = pygame.image.load('ressource/Gardien.png').convert_alpha()

@@ -33,10 +33,11 @@ class Game:
                         macg.move_right()
                     if event.key == pygame.K_LEFT:
                         macg.move_left()
-
-        map.display_update(window)
-        window.blit(pygame.image.load('ressource/MacGyver.png').convert_alpha(), (macg.x, macg.y))
-        pygame.display.flip()
+            
+            window.fill((0,0,0))
+            map.display_update(window)
+            window.blit(pygame.image.load('ressource/MacGyver.png').convert_alpha(), (macg.x, macg.y))
+            pygame.display.flip()
 
 def main():
     game = Game()
