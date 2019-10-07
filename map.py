@@ -17,12 +17,13 @@ class Map:
                 line_level = line_level[:-1] # remove last character from line_level list
                 self.structure.append(line_level)
 
-    def pos_hero(self):
+    """def pos_hero(self):
         # define position of MacGyver
+        macgyver = pygame.image.load('ressource/Macgyver.png').convert_alpha()
         for x, col in enumerate(self.structure):
             for y, case in enumerate(col):
                 if case == "d":
-                    self.pos_hero = (x, y)      
+                    self.pos_hero = (x, y)"""
 
     """def pos_guardian(self):
         # define position of guardian
@@ -31,14 +32,14 @@ class Map:
                 if case == "a":
                     self.pos_guardian = (x, y)"""
 
-    def pos_walls(self):
+    """def pos_walls(self):
         # define all paths positions
         self.pos_walls = []
         for x, col in enumerate(self.structure):
             for y, case in enumerate(col):
                 if case == "m":
                     walls = (x, y)
-                    self.pos_walls.append(walls)
+                    self.pos_walls.append(walls)"""
 
     def pos_items(self):
         # define 3 random positions for items
@@ -51,24 +52,21 @@ class Map:
         self.pos_items = random.sample(self.items_poss, 3)
 
     def display(self, window):
-        background = pygame.image.load('ressource/background.jpg').convert()
         wall = pygame.image.load('ressource/wall.jpg')
         guardian = pygame.image.load('ressource/Gardien.png').convert_alpha()
         item1 = pygame.image.load('ressource/aiguille.png').convert_alpha()
         item2 = pygame.image.load('ressource/ether.png').convert_alpha()
         item3 = pygame.image.load('ressource/seringue.png').convert_alpha()
-        
+
         for x, col in enumerate(self.structure):
             for y, case in enumerate(col):
                 pos_x = x * SPRITE_SIZE
                 pos_y = y * SPRITE_SIZE
                 if case == "m":
                     window.blit(wall, (pos_x, pos_y))
-                elif case == "0":
-                    window.blit(background, (pos_x, pos_y))
                 elif case == "a":
                     window.blit(guardian, (pos_x, pos_y))
-
+        
         object_number = 0
         for (x, y) in self.pos_items:
             pos_x = x * SPRITE_SIZE

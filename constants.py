@@ -1,4 +1,4 @@
-""" Constants for the MacGyver's game"""
+""" Constants for the MacGyver's game """
 
 ROWS = 15
 COLUMNS = 15
