@@ -34,30 +34,9 @@ class Game:
                     if event.key == pygame.K_LEFT:
                         macg.move_left()
 
-            window.fill((0, 0, 0))
-            map.display(window)            
-            window.blit(pygame.image.load('ressource/Macgyver.png').convert_alpha(), (macg.x, macg.y))
-            pygame.display.update()
-
-            item1_picked = False
-            if (macg.x, macg.y) == map.pos_items[0]:
-                item1_picked = True
-                window.blit(map.display.item1, (90, 0))
-
-            item2_picked = False
-            if (macg.x, macg.y) == map.pos_items[1]:
-                item1_picked = True
-                window.blit(map.display.item2, (120, 0))
-
-            item3_picked = False
-            if (macg.x, macg.y) == map.pos_items[2]:
-                item1_picked = True
-                window.blit(map.display.item3, (150, 0))
-            
-            pygame.display.flip()
-
-
-
+        map.display_update(window)
+        window.blit(pygame.image.load('ressource/MacGyver.png').convert_alpha(), (macg.x, macg.y))
+        pygame.display.flip()
 
 def main():
     game = Game()
