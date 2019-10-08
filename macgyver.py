@@ -33,4 +33,3 @@ class MG:    #Class who manage main character movements on the maze
 			if self.map.structure[self.case_x][self.case_y+1] != 'm':
 				self.case_y += 1
 				self.y = self.case_y * SPRITE_SIZE
-
