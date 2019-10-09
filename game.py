@@ -10,7 +10,7 @@ class Game:
         map = Map("level.txt")
         map.load_maze()
         map.pos_items()
-        map.pos_hero()
+        #map.pos_hero()
         map.display(0,0)
         macg = MG(map)
         

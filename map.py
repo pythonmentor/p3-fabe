@@ -19,12 +19,12 @@ class Map:
                 line_level = line_level[:-1] # remove last character from line_level list
                 self.structure.append(line_level)
 
-    def pos_hero(self):
+    """def pos_hero(self):
         # define position of MacGyver
         for x, col in enumerate(self.structure):
             for y, case in enumerate(col):
                 if case == "d":
-                    self.pos_hero = (x, y)
+                    self.pos_hero = (x, y)"""
 
     """def pos_guardian(self):
         # define position of guardian
@@ -77,7 +77,7 @@ class Map:
             pos_x = x * SPRITE_SIZE
             pos_y = y * SPRITE_SIZE
             if object_number == 0:
-                self.window.blit(item1, (pos_x, pos_y))               
+                self.window.blit(item1, (pos_x, pos_y))              
                 object_number +=1
             elif object_number == 1:
                 self.window.blit(item2, (pos_x, pos_y))               

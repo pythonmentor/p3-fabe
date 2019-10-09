@@ -9,7 +9,7 @@ class MG:    #Class who manage main character movements on the maze
 		self.case_y = 0
 		self.x = 0
 		self.y = 0
-		self.nbrItems = 0
+		self.backpack = []
 
 	def move_right(self):
 		if self.case_x < (COLUMNS - 1):
@@ -42,10 +42,9 @@ class MG:    #Class who manage main character movements on the maze
 	def check_position(self):
 		for (x, y) in self.map.pos_items:
 			if self.case_x == x and self.case_y == y:
-				self.nbrItems += 1
-				print(self.nbrItems)
-				if self.nbrItems == 3:
-					print("Vous avez récupéré les 3 objets!")
+				self.map.pos_items.remove((self.case_x, self.case_y))
+				#self.backpack.append((self.case_x, self.case_y))
+				#print(self.backpack)
 				
 		
 
