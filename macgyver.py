@@ -8,7 +8,7 @@ class MG:    #Class who manage main character movements on the maze
 		self.case_y = 0
 		self.x = 0
 		self.y = 0
-		self.backpack = 0
+		#self.backpack = 0
 
 	def move_right(self):
 		if self.case_x < (COLUMNS - 1):
@@ -40,9 +40,19 @@ class MG:    #Class who manage main character movements on the maze
 
 	def check_picked(self):
 		for (x, y) in self.map.pos_items:
-			if self.case_x == x and self.case_y == y:
-				print("You have an object!!")
+			if (self.case_x, self.case_y) == self.map.pos_items[0]:
+				print("You have a needle")
+				self.map.pos_items[0] = (0, 0)
+			if (self.case_x, self.case_y) == self.map.pos_items[1]:
+				print("You have a syringe")
+				self.map.pos_items[1] = (1, 0)
+			if (self.case_x, self.case_y) == self.map.pos_items[2]:
+				print("You have ether")
+				self.map.pos_items[2] = (2, 0)
+
 				#self.backpack.append((self.case_x, self.case_y))
+
+
 
 				
 		
