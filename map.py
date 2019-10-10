@@ -57,9 +57,9 @@ class Map:
         wall = pygame.image.load('ressource/wall.jpg')
         macgyver = pygame.image.load('ressource/MacGyver.png').convert_alpha()
         guardian = pygame.image.load('ressource/Gardien.png').convert_alpha()
-        item1 = pygame.image.load('ressource/aiguille.png').convert_alpha()
-        item2 = pygame.image.load('ressource/ether.png').convert_alpha()
-        item3 = pygame.image.load('ressource/seringue.png').convert_alpha()
+        needle = pygame.image.load('ressource/aiguille.png').convert_alpha()
+        ether = pygame.image.load('ressource/ether.png').convert_alpha()
+        syringe = pygame.image.load('ressource/seringue.png').convert_alpha()
 
         for x, col in enumerate(self.structure):
             for y, case in enumerate(col):
@@ -72,17 +72,9 @@ class Map:
                 elif case == "a":
                     self.window.blit(guardian, (pos_x, pos_y))
         
-        object_number = 0
-        for (x, y) in self.pos_items:
-            pos_x = x * SPRITE_SIZE
-            pos_y = y * SPRITE_SIZE
-            if object_number == 0:
-                self.window.blit(item1, (pos_x, pos_y))              
-                object_number +=1
-            elif object_number == 1:
-                self.window.blit(item2, (pos_x, pos_y))               
-                object_number +=1
-            elif object_number == 2:
-                self.window.blit(item3, (pos_x, pos_y))
+        needle_pos, syringe_pos, ether_pos = self.pos_items
+        self.window.blit(needle, (needle_pos[0]*SPRITE_SIZE, needle_pos[1]*SPRITE_SIZE))
+        self.window.blit(syringe, (syringe_pos[0]*SPRITE_SIZE, syringe_pos[1]*SPRITE_SIZE))
+        self.window.blit(ether, (ether_pos[0]*SPRITE_SIZE, ether_pos[1]*SPRITE_SIZE))
         
         pygame.display.flip()
