@@ -16,7 +16,7 @@ class MG:    #Class who manage main character movements on the maze
 				self.case_x += 1
 				self.x = self.case_x * SPRITE_SIZE
 				self.check_picked()
-				#self.check_win()
+				self.check_win()
 
 	def move_left(self):
 		if self.case_x > 0:
@@ -24,7 +24,7 @@ class MG:    #Class who manage main character movements on the maze
 				self.case_x -= 1
 				self.x = self.case_x * SPRITE_SIZE
 				self.check_picked()
-				#self.check_win()
+				self.check_win()
 
 	def move_up(self):
 		if self.case_y > 0:
@@ -32,7 +32,7 @@ class MG:    #Class who manage main character movements on the maze
 				self.case_y -= 1
 				self.y = self.case_y * SPRITE_SIZE
 				self.check_picked()
-				#self.check_win()
+				self.check_win()
 
 	def move_down(self):
 		if self.case_y < (ROWS - 1):
@@ -40,7 +40,7 @@ class MG:    #Class who manage main character movements on the maze
 				self.case_y += 1
 				self.y = self.case_y * SPRITE_SIZE
 				self.check_picked()
-				#self.check_win()
+				self.check_win()
 
 	def check_picked(self):
 		for (x, y) in self.map.pos_items:
@@ -67,9 +67,7 @@ class MG:    #Class who manage main character movements on the maze
 					if self.backpack == 3 :
 						print("You win!!")
 					else :
-						print("You loose...")
-
-
+						print("You loose... You don't picked up all items.")
 
 				
 		
