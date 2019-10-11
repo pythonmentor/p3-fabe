@@ -26,21 +26,12 @@ class Map:
                 if case == "d":
                     self.pos_hero = (x, y)"""
 
-    """def pos_guardian(self):
+    def pos_guardian(self):
         # define position of guardian
         for x, col in enumerate(self.structure):
             for y, case in enumerate(col):
                 if case == "a":
-                    self.pos_guardian = (x, y)"""
-
-    """def pos_walls(self):
-        # define all paths positions
-        self.pos_walls = []
-        for x, col in enumerate(self.structure):
-            for y, case in enumerate(col):
-                if case == "m":
-                    walls = (x, y)
-                    self.pos_walls.append(walls)"""
+                    self.pos_guardian = (x, y)
 
     def pos_items(self):
         # define 3 random positions for items

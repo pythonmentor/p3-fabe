@@ -10,7 +10,7 @@ class Game:
         map = Map("level.txt")
         map.load_maze()
         map.pos_items()
-        #map.pos_hero()
+        map.pos_guardian()
         map.display(0,0)
         macg = MG(map)
         
@@ -30,6 +30,7 @@ class Game:
                         macg.move_left()
             
             map.display(macg.x, macg.y)
+            macg.check_win()
 
 def main():
     game = Game()
