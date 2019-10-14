@@ -2,25 +2,23 @@ import pygame
 from pygame.locals import *
 from map import *
 from macgyver import *
-from constants import *
 
 class Game:
 
     def run(self):
         map = Map("level.txt")
         map.load_maze()
-        map.pos_hero()
         map.pos_items()
         map.pos_guardian()
-        map.display(0,0)
-        macg = MG(map)
-        
-        continuer = True
-        while continuer:
+        map.display(0, 0)
+        macg = Macgyver(map)
+
+        continued = True
+        while continued:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT  or \
                         event.type == KEYDOWN and event.key == K_ESCAPE:
-                    continuer = False
+                    continued = False
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_DOWN:
                         macg.move_down()
@@ -30,9 +28,9 @@ class Game:
                         macg.move_right()
                     if event.key == pygame.K_LEFT:
                         macg.move_left()
-                
-            map.display(macg.x, macg.y)
 
+            map.display(macg.x, macg.y)
+            macg.check_win()
 
 def main():
     game = Game()
