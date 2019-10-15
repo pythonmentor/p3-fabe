@@ -1,7 +1,7 @@
 import pygame
-from pygame.locals import *
-from map import *
 from macgyver import *
+from map import *
+from pygame.locals import *
 
 class Game:
 
@@ -20,6 +20,7 @@ class Game:
                         event.type == KEYDOWN and event.key == K_ESCAPE:
                     continued = False
                 if event.type == pygame.KEYDOWN:
+                    pygame.key.set_repeat(300, 300)
                     if event.key == pygame.K_DOWN:
                         macg.move_down()
                     if event.key == pygame.K_UP:
@@ -29,8 +30,8 @@ class Game:
                     if event.key == pygame.K_LEFT:
                         macg.move_left()
 
-            map.display(macg.x, macg.y)
-            macg.check_win()
+                map.display(macg.x, macg.y)
+                macg.check_win()
 
 def main():
     game = Game()

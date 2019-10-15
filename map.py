@@ -73,14 +73,14 @@ class Map:
 
     def display_win(self):
         self.window.fill((0, 0, 0))
-        win_img = pygame.image.load('ressource/win.png').convert_alpha()
+        win_img = pygame.image.load('ressource/win.jpg').convert_alpha()
         self.window.blit(win_img, (0, 0))
         pygame.display.flip()
 
-    def display_loose(self):
+    def display_lose(self):
         self.window.fill((0, 0, 0))
-        loose_img = pygame.image.load('ressource/game_over.png').convert_alpha()
-        self.window.blit(loose_img, (0, 0))
+        lose_img = pygame.image.load('ressource/game_over.jpg').convert_alpha()
+        self.window.blit(lose_img, (0, 0))
         pygame.display.flip()
 
 
