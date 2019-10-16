@@ -1,9 +1,7 @@
 from constants import *
 
-
 class Macgyver:
-
-    # Class who manage main character movements on the maze
+     # Class who manage main character movements on the maze
 
     def __init__(self, map):
         self.map = map

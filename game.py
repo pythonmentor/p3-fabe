@@ -15,13 +15,13 @@ class Game:
 
         continued = True
         while continued:
-            for event in pygame.event.get():
+            for event in pygame.event.get(): #Seeking every events happening while the game is running
                 if event.type == pygame.QUIT  or \
-                        event.type == KEYDOWN and event.key == K_ESCAPE:
-                    continued = False
+                        event.type == KEYDOWN and event.key == K_ESCAPE: # If any of these events is QUIT type
+                    continued = False # Loop is stopped and the game windows is closed
                 if event.type == pygame.KEYDOWN:
-                    pygame.key.set_repeat(300, 300)
-                    if event.key == pygame.K_DOWN:
+                    # Keyboard touch used to moove MacGyver:
+                    if event.key == pygame.K_DOWN: # If ARROW DOWN pressed
                         macg.move_down()
                     if event.key == pygame.K_UP:
                         macg.move_up()
@@ -30,8 +30,8 @@ class Game:
                     if event.key == pygame.K_LEFT:
                         macg.move_left()
 
-                map.display(macg.x, macg.y)
-                macg.check_win()
+                map.display(macg.x, macg.y) # Re-pasting after the events
+                macg.check_win() # Check the victory conditions
 
 def main():
     game = Game()
