@@ -1,7 +1,8 @@
 import pygame
-from macgyver import *
-from map import *
-from pygame.locals import *
+from pygame import K_ESCAPE, KEYDOWN
+from macgyver import Macgyver
+from map import Map
+
 
 class Game:
 
@@ -15,13 +16,17 @@ class Game:
 
         continued = True
         while continued:
-            for event in pygame.event.get(): #Seeking every events happening while the game is running
-                if event.type == pygame.QUIT  or \
-                        event.type == KEYDOWN and event.key == K_ESCAPE: # If any of these events is QUIT type
-                    continued = False # Loop is stopped and the game windows is closed
+            for event in pygame.event.get():
+                '''Seeking every events happening while the game is running'''
+                if event.type == pygame.QUIT or \
+                        event.type == KEYDOWN and event.key == K_ESCAPE:
+                    '''If any of these events is QUIT type'''
+                    continued = False
+                    '''Loop is stopped and the game windows is closed'''
                 if event.type == pygame.KEYDOWN:
-                    # Keyboard touch used to moove MacGyver:
-                    if event.key == pygame.K_DOWN: # If ARROW DOWN pressed
+                    '''Keyboard touch used to moove MacGyver'''
+                    if event.key == pygame.K_DOWN:
+                        '''If ARROW DOWN pressed'''
                         macg.move_down()
                     if event.key == pygame.K_UP:
                         macg.move_up()
@@ -30,12 +35,16 @@ class Game:
                     if event.key == pygame.K_LEFT:
                         macg.move_left()
 
-                map.display(macg.x, macg.y) # Re-pasting after the events
-                macg.check_win() # Check the victory conditions
+                map.display(macg.x, macg.y)
+                '''Re-pasting after the events'''
+                macg.check_win()
+                '''Check the victory conditions'''
+
 
 def main():
     game = Game()
     game.run()
+
 
 if __name__ == "__main__":
     main()
