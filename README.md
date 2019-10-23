@@ -1,5 +1,7 @@
 # MacGyver: The Game
 
+Mini game based on the theme mac gyver, which involves moving a hero, picking up objects then confront a Guardian for win
+
 # Project preparation:
 
 Initializing a virtual development environment:
