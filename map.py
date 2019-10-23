@@ -46,11 +46,14 @@ class Map:
         '''Display the maze and its elements'''
         self.window.fill((0, 0, 0))
         wall_img = pygame.image.load('img/wall.jpg')
+        backgr_img = pygame.image.load('img/backgr.jpg')
         macgyver_img = pygame.image.load('img/MacGyver.png').convert_alpha()
         guardian_img = pygame.image.load('img/Gardien.png').convert_alpha()
         needle_img = pygame.image.load('img/aiguille.png').convert_alpha()
         ether_img = pygame.image.load('img/ether.png').convert_alpha()
         syringe_img = pygame.image.load('img/seringue.png').convert_alpha()
+
+        self.window.blit(backgr_img, (0, 0))
 
         for x, col in enumerate(self.structure):
             for y, case in enumerate(col):
