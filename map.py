@@ -13,7 +13,7 @@ class Map:
             )
 
     def load_maze(self):
-        '''loading a maze structure from the txt file'''
+        """loading a maze structure from the txt file"""
         self.structure = []
         with open(self.filename, "r") as f:
             for line in f:
@@ -23,14 +23,14 @@ class Map:
                 self.structure.append(line_level)
 
     def pos_guardian(self):
-        '''define position of guardian'''
+        """define position of guardian"""
         for x, col in enumerate(self.structure):
             for y, case in enumerate(col):
                 if case == "a":
                     self.pos_guardian = (x, y)
 
     def pos_items(self):
-        '''define 3 random positions for items'''
+        """define 3 random positions for items"""
         self.items_poss = []
         '''Create an empty list'''
         for x, col in enumerate(self.structure):
@@ -43,7 +43,7 @@ class Map:
         '''Choose 3 random positions in the list'''
 
     def display(self, hero_x, hero_y):
-        '''Display the maze and its elements'''
+        """Display the maze and its elements"""
         self.window.fill((0, 0, 0))
         wall_img = pygame.image.load('img/wall.jpg')
         backgr_img = pygame.image.load('img/backgr.jpg')
@@ -80,14 +80,14 @@ class Map:
         pygame.display.flip()
 
     def display_win(self):
-        '''Display the victory image'''
+        """Display the victory image"""
         self.window.fill((0, 0, 0))
         win_img = pygame.image.load('img/win.jpg').convert_alpha()
         self.window.blit(win_img, (0, 0))
         pygame.display.flip()
 
     def display_lose(self):
-        '''Display the defeat image'''
+        """Display the defeat image"""
         self.window.fill((0, 0, 0))
         lose_img = pygame.image.load('img/game_over.jpg').convert_alpha()
         self.window.blit(lose_img, (0, 0))
