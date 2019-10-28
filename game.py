@@ -9,6 +9,10 @@ from map import Map
 class Game:
     """ -tc- Ajouter une docstring"""
     def run(self):
+        """ -tc- Ajouter une docstring."""
+
+        # -tc- les 6 lignes ci-dessous sont d'excellentes
+        # -tc- candidates pour une méthode __init__
         map = Map("level.txt")
         map.load_maze()
         map.pos_items()
