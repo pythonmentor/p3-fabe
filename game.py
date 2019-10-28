@@ -1,3 +1,5 @@
+""" -tc- Ajouter une docstring."""
+
 import pygame
 from pygame import K_ESCAPE, KEYDOWN
 from macgyver import Macgyver
@@ -5,7 +7,7 @@ from map import Map
 
 
 class Game:
-
+    """ -tc- Ajouter une docstring"""
     def run(self):
         map = Map("level.txt")
         map.load_maze()
@@ -17,6 +19,8 @@ class Game:
         continued = True
         while continued:
             for event in pygame.event.get():
+                # -tc- Attention: un commentaire en python s'exprime avec un #, pas avec
+                # -tc- guillemets ou des apostrophes
                 '''Seeking every events happening while the game is running'''
                 if event.type == pygame.QUIT or \
                         event.type == KEYDOWN and event.key == K_ESCAPE:
@@ -42,6 +46,7 @@ class Game:
 
 
 def main():
+    """ -tc- Ajouter une docstring"""
     game = Game()
     game.run()
 
